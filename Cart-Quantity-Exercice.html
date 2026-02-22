@@ -39,6 +39,20 @@
   >
     +3
   </button>
+  <button 
+  onclick="
+  if (cartQuantity === 0) {
+    console.log('The Cart Quantity alredy is 0');
+
+  }else {
+    cartQuantity = cartQuantity - 1;
+    console.log(cartQuantity);
+  }
+  
+  "
+  >
+    -1
+  </button>
   <button
   
     onclick="

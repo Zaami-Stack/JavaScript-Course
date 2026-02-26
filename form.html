@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body, html {
+      height: 80vh;
+      overflow: hidden;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    label, input {
+      margin-bottom: 8px;
+      margin-right: 1rem;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    input {
+      border: 1px solid lightgray;
+      padding: 5px;
+    }
+    #reset, #afficher {
+      border: 1px solid green;
+      color: green;
+      background-color: white;
+      margin-left: 4rem;
+    }
+    #reset:hover, #afficher:hover {
+      border: none;
+      background-color: green;
+      border-radius: 4px;
+      color: white;
+      transition: ease-in 0.15s;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>Learning JavaScript</h1>
+    <form>
+      <table>
+        <tr>
+          <td><label for="email">Tapez votre email: </label></td>
+          <td><input type="email" id="email" required></td>
+        </tr>
+        <tr>
+          <td><button type="reset" value="Reset" id="reset" onclick="reset()">Reset</button></td>
+          <td><button type="submit" value="Afficher" id="afficher" onclick="Afficher()">Afficher</button></td>
+        </tr>
+        <tr>
+          <td><label for="user">Utilisateur: </label></td>
+          <td><input type="text" id="user" ></td>
+        </tr>
+        <tr>
+          <td><label for="domain">Domain: </label></td>
+          <td><input type="text" id="domain" ></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <script>
+      const em=document.getElementById('em')
+      const user=document.getElementById('user')
+      const dom=document.getElementById('dom')
+      const btn=document.getElementById('btn')
+      btn.addEventListener('click',()=>{
+      if(!em.value)
+      {
+        alert("Veuillez saisir votre Email: ")
+        em.focus();
+        return;
+      }
+        /* let tab=em.value.split('@');
+        user.value=table[0];
+        dom.value=tab[1]; */
+        let tab=em.value.split('@');    
+        user.value=em.value.slice(0, index);
+        dom.value=em.value.slice(index+1);
+      })
+  </script>
+</body>
+</html>

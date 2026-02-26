@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magasin</title>
+  <style>
+      body, html {
+        height: 80vh;
+        overflow: hidden;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      label, input {
+        margin-bottom: 8px;
+        margin-right: 1rem;
+        font-size: 16px;
+        border-radius: 5px;
+      }
+      input {
+        border: 1px solid lightgray;
+        padding: 5px;
+      }
+      button {
+        display: flex;
+        gap: 10px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        margin-left: 7rem;
+      }
+      #commander {
+        display: flex;
+        justify-content: center;
+        border: 1px solid green;
+        color: green;
+        background-color: white;
+        padding: 10px;
+        border-radius: 4px;
+        width: 50%;
+      }
+      #commander:hover {
+        border: none;
+        background-color: green;
+        border-radius: 4px;
+        color: white;
+        transition: ease-in 0.15s;
+        cursor: pointer;
+
+      }
+      select {
+        padding: 5px;
+        border-radius: 4px;
+        border: 1px solid lightgray;
+        cursor: pointer;
+      } 
+    </style>
+</head>
+<body>
+    <div>
+      <h1>Magasin En Ligne</h1>
+      <form>
+        <table>
+          <tr>
+            <td><label for="article">Choisissez votre article: </label></td>
+              <td><select name="article" id="op">
+                <option value="1">Step One HE - Magnetic Keyboard 60%</option>
+                <option value="2">Razer Viper v3 Pro - 8k hz 54g</option>
+                <option value="3">Iphone 17 Pro Max - Orange</option>
+                <option value="4">FlexiSpot Ergonomic Chair</option>
+                </select>
+              </td>
+          </tr>
+          <tr>
+            <td><label for="qte">Tapez la quantite acheter: </label></td>
+            <td><input type="text" id="qte" required></td>
+          </tr>
+          <tr>
+            <td colspan="2"><button id="commander" type="button">Commander</button></td>
+          </tr>
+          <tr>
+            <td><label for="mt">Montant a payer: </label></td>
+            <td><input type="text" id="output" readonly></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+<script>
+  const Article = [
+    { id: 1, designation: "Step One HE - Magnetic Keyboard 60%", prix: 550.00 },
+    { id: 2, designation: "Razer Viper v3 Pro - 8k hz 54g", prix: 1899.00 },
+    { id: 3, designation: "Iphone 17 Pro Max - Orange", prix: 14599.00 },
+    { id: 4, designation: "FlexiSpot Ergonomic Chair", prix: 8994.99 },
+  ];
+
+  const select = document.getElementById("op");
+  const qt = document.getElementById("qte");
+  const output = document.getElementById("output");
+  const btn = document.getElementById("commander");
+
+  btn.addEventListener("click", commander);
+
+  function commander() {
+    const selectedId = Number(select.value);       // 1..4
+    const quantity = Number(qt.value);
+
+    if (!quantity || quantity <= 0) {
+      alert("Veuillez entrer une quantité valide.");
+      return;
+    }
+
+    const item = Article.find(a => a.id === selectedId);
+
+    if (!item) {
+      alert("Article introuvable.");
+      return;
+    }
+
+    const total = item.prix * quantity;
+
+    // show amount (you can format how you want)
+    output.value = total.toFixed(2);
+  }
+</script>
+</body>
+</html>

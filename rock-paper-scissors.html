@@ -13,18 +13,52 @@
   <button onclick="GamePlay('Rock')">
     Rock
   </button>
-  <button onclick="GamePlay('Paper')">
+  <button onclick="GamePlay('Paper');">
     Paper
   </button>
-  <button onclick="GamePlay('Scissors')">
+  <button onclick="GamePlay('Scissors');">
     Scissors
   </button>
+  <button
+  onclick="showScore();"
+  >
+    Show Score
+  </button>
+  <button onclick="ResetButton();">
+    Reset Score
+  </button>
+  <p>Result</p>
+  <p>Game Play</p>
+  <p id="scoreP"></p>
 
   <script>
+
+    let savedScoreStr = localStorage.getItem('savedScore');
+    let savedScoreObjc = JSON.parse(savedScoreStr);
+    
+
+    let Score =  savedScoreObjc || {
+      win : 0,
+      lose : 0,
+      draw : 0
+    }
+    
     
     let botMove = '';
-
-
+    function showScore() {
+      alert(`Score is : \n 
+      Wins : ${Score.win} Lose : ${Score.lose} Draw : ${Score.draw} `)
+    }
+    function ResetButton() {
+      
+      Score.win = 0;
+      Score.lose = 0;
+      Score.draw = 0;
+      localStorage.removeItem("savedScore");
+      alert('Score has been reset ');
+    }
+    let scoreP = document.getElementById("scoreP");
+    scoreP.textContent = ` Score is : Wins : ${Score.win} Lose: ${Score.lose} Draw: ${Score.draw}`;
     function GamePlay(playerMove) {
       let result = '';
       let botchose = botPick();
@@ -67,8 +101,23 @@
           result = 'Draw'
         }
       }
-      alert(`bot chose ${botchose}, You chose ${playerMove} so it's ${result}`);
+
+      if (result === 'Win') {
+        Score.win = Score.win + 1;
+      }else if (result === 'Lose') {
+        Score.lose = Score.lose + 1;
+
+      } else {
+        Score.draw = Score.draw + 1;
+      }
+      
+
+      localStorage.setItem('savedScore' ,JSON.stringify(Score));
+
+      scoreP.textContent = ` Score is : Wins : ${Score.win} Lose: ${Score.lose} Draw: ${Score.draw}`;
+      
     }
+    
     
     function botPick() {
       let randomNumber = Math.random();
@@ -83,9 +132,15 @@
       }
       
       return botMove;
-
+          
 
     }
+    
+
+
+    
+
+    // Json.stringify -> Convert the type of data to a string
   </script>
 </body>
 </html>

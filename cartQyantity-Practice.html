@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>
+    Counter 
+  </p>
+  <span id="Cart">0</span>
+  <button onclick="AddToCart();">+</button>
+  <button onclick="removeToCart();">-</button>
+  <button onclick="resetToCart();">Reset</button>
+
+  <script>
+    const cart = document.getElementById("Cart");
+    let cartQuantity = JSON.parse(localStorage.getItem("CartQuantity")) || 0;
+    cart.textContent = cartQuantity;
+
+    
+
+
+    function AddToCart(){
+      cartQuantity = cartQuantity + 1;
+      cart.textContent = cartQuantity;
+
+      localStorage.setItem("CartQuantity",JSON.stringify(cartQuantity));
+    }
+
+    function removeToCart(){
+      if (cartQuantity > 0) {
+        cartQuantity = cartQuantity - 1;
+      }else{
+        cartQuantity = 0;
+      }
+      cart.textContent = cartQuantity;
+
+      localStorage.setItem("CartQuantity",JSON.stringify(cartQuantity));
+    }
+    function resetToCart(){
+      cartQuantity = cartQuantity * 0;
+      cart.textContent = cartQuantity;
+
+      localStorage.setItem("CartQuantity",JSON.stringify(cartQuantity));
+    }
+  </script>
+
+</body>
+</html>

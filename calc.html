@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body, html {
+        height: 80vh;
+        overflow: hidden;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      label, input {
+        margin-bottom: 8px;
+        margin-right: 1rem;
+        font-size: 16px;
+        border-radius: 5px;
+      }
+      input {
+        border: 1px solid lightgray;
+        padding: 5px;
+      }
+      .btn {
+        display: flex;
+        flex-direction: column;
+        margin-left: 4rem;
+        gap: 10px;
+        margin-top: 8px;
+      }
+      #reset, #calculer {
+        display: flex;
+        justify-content: center;
+        border: 1px solid green;
+        color: green;
+        background-color: white;
+        padding: 10px;
+        border-radius: 4px;
+        width: 100%;
+      }
+      #reset:hover, #calculer:hover {
+        border: none;
+        background-color: green;
+        border-radius: 4px;
+        color: white;
+        transition: ease-in 0.15s;
+        cursor: pointer;
+
+      }
+      select {
+        padding: 5px;
+        border-radius: 4px;
+        border: 1px solid lightgray;
+        cursor: pointer;
+      } 
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Simple Calculator</h1>
+      <form>
+        <table>
+          <tr>
+            <td><label for="n1">Premier Nombre : </label></td>
+            <td><input type="text" id="n1" required></td>
+          </tr>
+          <tr>
+            <td><label for="n2">Deuxieme Nombre: </label></td>
+            <td><input type="text" id="n2" ></td>
+          </tr>
+          <tr>
+            <td><label for="calc">Choisir une option: </label></td>
+              <td><select name="calc" id="op">
+                <option value="add">addition</option>
+                <option value="sous">soustraction</option>
+                <option value="mult">multiplication</option>
+                <option value="div">division</option>
+                </select>
+              </td>
+          </tr>
+          <tr>
+            <td><label for="result">Resultat</label></td>
+            <td><input type="text" id="output"></td>
+          </tr>
+        </table>
+      </form>
+      <div>
+        <button id="calculer" type="button">Calculer</button>
+      </div>
+    </div>
+    <script>
+      let n1=document.getElementById("n1")
+      let n2=document.getElementById("n2")
+      let op=document.getElementById("op")
+      let btn=document.getElementById("calculer")
+      let output=document.getElementById("output")
+      btn.addEventListener("click", function(){
+        switch(op.value){
+          case 'add' : 
+                      output.value=Number(n1.value)+Number(n2.value);
+                      break;
+          case 'sous' : 
+                      output.value=Number(n1.value)-Number(n2.value);
+                      break;
+          case 'mult' : 
+                      output.value=Number(n1.value)*Number(n2.value);
+                      break;
+          case 'div' : 
+          if (Number(n2.value)===0){
+            alert("Division impossible par 0");
+            return;
+          }
+                      output.value=Number(n1.value)/Number(n2.value);
+                      break;
+        }
+      })
+    </script>
+  </body>
+</html>

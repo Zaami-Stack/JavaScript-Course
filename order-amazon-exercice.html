@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" placeholder="Cost of order" id="cost" onkeydown="keyHandling(event)">
+  <button
+  onclick="Calculate();"
+  >Calculate</button>
+  <p id="output"></p>
+  <script>
+    let userCost = document.getElementById("cost");
+    let newCost;
+    let output = document.getElementById("output");
+    function Calculate () {
+
+      if (Number(userCost.value)  >= 40) {
+        newCost = Number(userCost.value) ;
+
+      } else {
+        newCost = Number(userCost.value)  + 10;
+      }
+      output.innerHTML = newCost;
+    }
+
+    function keyHandling (event) {
+      if (event.key === 'Enter') {
+        Calculate();
+
+      }
+
+    }
+  </script>
+</body>
+</html>

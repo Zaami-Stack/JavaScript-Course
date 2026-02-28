@@ -1,0 +1,29 @@
+body{
+      background-color: black;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      letter-spacing: 0.8px;
+      font-size: 15px;
+    }
+    #gamePlay{
+      margin-top: 20px;
+      margin-bottom: 50px;
+    }
+    .moves{
+      height: 50px;
+      
+      
+    }
+    .movesBtn {
+      background-color: transparent;
+      border: 3px solid white;
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      cursor: pointer;
+      margin-right: 2rem;
+      margin-bottom: 2rem;
+
+
+    }

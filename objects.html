@@ -6,12 +6,47 @@
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <title>Document</title>
 </head>
-<body>
-  
+<body style="outline: none !important;">
+
+  <div>
+    <label for="options">
+      Select Your choice
+    </label>
+    <select name="devices" id="options">
+      <option value="1">
+        Black iphone 17 pro max 
+      </option>
+      <option value="2">
+
+        Mouse Optic 1200 dpi with software
+        
+      </option>
+      
+      <option value="3">
+       Galaxy Samsung Ulra S12 
+      </option>
+    </select>
+    <div>
+      <label for="quantity">Quantity</label>
+      <input type="text">
+    </div>
+    <div>
+          <label for="total" ></label>
+          <input type="text" readonly>
+          
+          
+    </div>
+    <div>
+      <button>BUY ITEM</button>
+    </div>
+    
+  </div>
 
 
 
   <script>
+    const itemSelected = document.getElementByid("options");
+
 
 
   </script>
